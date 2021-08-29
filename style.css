@@ -13,6 +13,10 @@ body {
     padding: 10px;
     min-width: 100%;
   }
+
+  #textarea {
+    padding-left: 0;
+  }
   
   .jumbotron {
     text-align: center;
@@ -64,9 +68,11 @@ body {
     border-bottom-right-radius: 15px;
     background-color: #06aed5;
     color: white;
+    width: 100%;
   }
   
   .saveBtn i:hover {
     font-size: 20px;
     transition: all 0.3s ease-in-out;
+    color: black;
   }
