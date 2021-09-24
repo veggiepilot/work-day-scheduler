@@ -1,11 +1,82 @@
-// Display date
-var date = $("#currentDay");
-var now  = moment().format("dddd, MMMM Mo");
+
+let date        = $("#currentDay");
+let now         = moment().format("dddd, MMMM Do");
+// let currentTime = moment().format("kk:mm:ss");
+let currentTime = '10:00:59';
+
+let button = $('.saveBtn');
+
 
 date.append(now);
 
-// Create timbelocks for different work hours
-    // Each time block is color coded
-// Enter event in timeblock
-// Save scheduled event in local storage
-// Data persists when page is refreshed
+
+timeBlocks = {
+   
+    nineAM: {
+        time: "09:00:00",
+        range: "09:59:59",
+        textArea: $('#1')
+    },
+    tenAM: {
+        time: "10:00:00",
+        range: "10:59:59",
+        textArea: $('#2')
+    },
+    elevenAM: {
+        time: "11:00:00",
+        range: "11:59:59",
+        textArea: $('#3')
+    },
+    twelvePM: {
+        time: "12:00:00",
+        range: "12:59:59",
+        textArea: $('#4')
+    },
+    onePM: {
+        time: "13:00:00",
+        range: "13:59:59",
+        textArea: $('#5')
+    },
+    twoPM: {
+        time: "14:00:00",
+        range: "14:59:59",
+        textArea: $('#6')
+    },
+    threePM: {
+        time: "15:00:00",
+        range: "15:59:59",
+        textArea: $('#7')
+    },
+    fourPM: {
+        time: "16:00:00",
+        range: "16:59:59",
+        textArea: $('#8')
+    },
+    fivePM: {
+        time: "17:00:00",
+        range: "17:59:59",
+        textArea: $('#9')
+    }
+
+};
+
+for (let timeBlock in timeBlocks) {
+
+    if (currentTime > timeBlocks[timeBlock].time && currentTime > timeBlocks[timeBlock].time) {
+        timeBlocks[timeBlock].textArea[0].className = 'past';
+    }
+
+    if (currentTime >= timeBlocks[timeBlock].time && currentTime <= timeBlocks[timeBlock].range ) {
+        timeBlocks[timeBlock].textArea[0].className = 'present';
+    }
+
+}
+
+$(button).on('click', function (e) {
+    // console.log($(e.target).parents(".col-md-1").siblings("#textarea").children()[0].id);
+    localStorage.setItem(
+        $(e.target).parents(".col-md-1").siblings("#textarea").children()[0].id, 
+        $(e.target).parents(".col-md-1").siblings("#textarea").children()[0].value
+        );
+});
+
