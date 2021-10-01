@@ -17,6 +17,7 @@ timeBlocks = {
         textArea: $('#1'),
         id: 1
     },
+
     tenAM: {
         time: "10:00:00",
         range: "10:59:59",
